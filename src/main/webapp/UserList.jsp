@@ -36,14 +36,14 @@
                 <td>${users_hib.password}</td>
 
                 <td>
-                    <a href="getIdUserServlet?id=<c:out value='${users_hib.id}' />">Edit</a>
+                    <a href="getId?id=<c:out value='${users_hib.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="deleteUserServlet?id=<c:out value='${users_hib.id}' />">Delete</a>
+                    <a href="delete?id=<c:out value='${users_hib.id}' />" >Delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
-    <h2><a href="deleteAllUserServlet">Delete All data</a></h2>
+    <h2><a href="deleteAll">Delete All data</a></h2>
     <h2><a href="User.jsp">Add New User</a></h2>
     <h2><a href="index.jsp">Main page</a></h2>
 </div>
