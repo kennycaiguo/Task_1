@@ -16,7 +16,7 @@
     <h1>List All Users</h1>
 
 </center>
-<form method="GET" ></form>
+
 <div align="center" >
     <table border="1">
 
@@ -44,8 +44,8 @@
         </c:forEach>
     </table>
     <h2><a href="deleteAll">Delete All data</a></h2>
-    <h2><a href="User.jsp">Add New User</a></h2>
-    <h2><a href="index.jsp">Main page</a></h2>
+    <h2><a href="add">Add New User</a></h2>
+    <h2><a href="index">Main page</a></h2>
 </div>
 </body>
 </html>
