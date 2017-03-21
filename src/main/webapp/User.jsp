@@ -14,15 +14,15 @@
 <body>
 <center>
     <h2>
-        <a href="viewUserServlet">All Data</a>
+        <a href="view">All Data</a>
     </h2>
 </center>
 <div align="center">
     <c:if test="${users_hib != null}">
-    <form action="updateUserServlet" method="post">
+    <form action="update">
         </c:if>
         <c:if test="${users_hib == null}">
-        <form action="addUserServlet" method="post">
+        <form action="add" method="post">
             </c:if>
             <table border="1">
                 <caption>
