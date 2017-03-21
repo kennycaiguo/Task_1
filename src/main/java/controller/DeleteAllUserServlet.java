@@ -9,33 +9,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import static factory.AbstractFactory.getFactory;
 
-@WebServlet("/deleteAllUserServlet")
+@WebServlet("/deleteAll")
 public class DeleteAllUserServlet extends HttpServlet {
     private AbstractFactory factory;
 
 
     public DeleteAllUserServlet() {
-        factory = getFactory("hibernate");
+        try {
+            FileInputStream fileInputStream;
+            Properties properties=new Properties();
+            fileInputStream=new FileInputStream(
+                    "J:\\Java_Web_Projects\\Task_1\\src\\main\\resources\\factoryName.properties");
+            properties.load(fileInputStream);
+            String factoryName=properties.getProperty("factoryName");
+            factory = getFactory(factoryName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        Service service=factory.getService();
 
-
-        service.deleteAllUser();
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("viewUserServlet");
-
-        dispatcher.forward(req, resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req,resp);
+        resp.setContentType("text/html");
+        Service service=factory.getService();
+        service.deleteAllUser();
+        RequestDispatcher dispatcher = req.getRequestDispatcher("view");
+        dispatcher.forward(req, resp);
     }
 }
